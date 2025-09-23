@@ -51,11 +51,7 @@ We use the **Smart Healthcare – DailyLife Dataset (Wearable Device)** from Kag
 │ ├── raw/ # Original Kaggle CSV (not versioned)
 │ ├── cleaned/ # Canonical cleaned dataset (Phase 0)
 │ └── features/ # Feature-engineered dataset (Phase 1)
-├── notebooks/
-│ ├── 00_EDA.ipynb # Exploratory Data Analysis
-│ └── 01_Feature_Engineering.ipynb
-├── src/ # Optional: reusable scripts / functions
-├── docs/ # Documentation, reports
+
 ├── requirements.txt # Required Python packages
 └── README.md
 
