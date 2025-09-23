@@ -47,4 +47,44 @@ We use the **Smart Healthcare – DailyLife Dataset (Wearable Device)** from Kag
 
 ## Folder Structure
 
+├── data/
+│ ├── raw/ # Original Kaggle CSV (not versioned)
+│ ├── cleaned/ # Canonical cleaned dataset (Phase 0)
+│ └── features/ # Feature-engineered dataset (Phase 1)
+├── notebooks/
+│ ├── 00_EDA.ipynb # Exploratory Data Analysis
+│ └── 01_Feature_Engineering.ipynb
+├── src/ # Optional: reusable scripts / functions
+├── docs/ # Documentation, reports
+├── requirements.txt # Required Python packages
+└── README.md
 
+---
+
+## Phase 0 — Setup & Exploration
+
+- Inspected dataset for **columns, units, missing values**  
+- Converted categorical fields (`Gender`) to `category`  
+- Created **canonical dataset** (`canonical_dataset.csv`)  
+- Split blood pressure into systolic/diastolic columns  
+- Documented **summary statistics per user**  
+- Plotted **distributions, correlations, and outliers**  
+
+---
+
+## Phase 1 — Feature Engineering & Labeling
+
+- Time-domain features per user/day:  
+  - Δsteps, Δsleep, Δheart_rate (day-to-day differences)  
+  - Rolling averages (3–5 day trends)  
+- Activity ratio and sleep efficiency (already calculated)  
+- Cross-feature analysis: correlations between activity & heart rate, sleep & screen time  
+- Labeling for anomaly detection based on **heuristic thresholds**  
+  - Steps < 2000 or > 20,000 → abnormal  
+  - Sleep < 300 min or > 600 min → abnormal  
+  - Heart rate / SpO₂ outside normal range → abnormal  
+
+Deliverables for Phase 0 & 1:  
+
+- `data/cleaned/canonical_dataset.csv`  
+- `data/features/feature_dataset.csv`  
