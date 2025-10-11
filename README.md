@@ -80,11 +80,6 @@ This project follows a standard structure for a machine learning pipeline focuse
 | **│   ├── shap_ensemble_summary.png** | File | Summary plot of SHAP values for the Ensemble model. |
 | **│   ├── shap_ensemble_detailed.png** | File | Detailed force/waterfall plot of SHAP for the Ensemble model. |
 | **│   └── model_comparison.png** | File | Visualization comparing the performance of all models. |
-| **└── models/** | Directory | Stores trained and serialized machine learning models. |
-| **    ├── random_forest_model.pkl** | File | The saved Random Forest model object. |
-| **    ├── xgboost_model.pkl** | File | The saved XGBoost model object. |
-| **    ├── lightgbm_model.pkl** | File | The saved LightGBM model object. |
-| **    └── ensemble_model.pkl** | File | The saved Ensemble model object. |
 
 ---
 
