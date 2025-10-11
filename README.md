@@ -45,37 +45,46 @@ We use the **Smart Healthcare – DailyLife Dataset (Wearable Device)** from Kag
 
 ---
 
-## Folder Structure
-|Wearable-Data-Fusion/
-|README.md
-|requirements.txt
-|.gitignore
-|data/
-|data/raw/
-|data/raw/Smart Healthcare - Daily Lifestyle Dataset (Wearable device) (1).csv
-|data/cleaned/
-|data/cleaned/canonical_dataset.csv
-|data/processed/
-|data/processed/feature_dataset.csv
-|data/processed/feature_dataset_with_cluster.csv
-|src/
-|src/data_preprocessing.py
-|src/feature_engineering.py
-|src/model_training.py
-|src/shap_explainability.py
-|src/utils.py
-|outputs/
-|outputs/correlation_heatmap.png
-|outputs/shap_rf_summary.png
-|outputs/shap_rf_detailed.png
-|outputs/shap_xgb_summary.png
-|outputs/shap_xgb_detailed.png
-|outputs/shap_lgbm_summary.png
-|outputs/shap_lgbm_detailed.png
-|outputs/shap_ensemble_summary.png
-|outputs/shap_ensemble_detailed.png
-|outputs/model_comparison.png
+## Project Structure
 
+This project follows a standard structure for a machine learning pipeline focused on Wearable Data Fusion.
+
+| Path | Type | Description |
+| :--- | :--- | :--- |
+| **Wearable-Data-Fusion/** | Directory | **Root** directory for the project. |
+| **├── README.md** | File | The main project documentation and overview. |
+| **├── requirements.txt** | File | Lists all necessary Python dependencies. |
+| **├── .gitignore** | File | Specifies files and directories to ignore in Git. |
+| **├── data/** | Directory | Stores all datasets, organized by processing stage. |
+| **│   ├── raw/** | Directory | Original, unaltered dataset files. |
+| **│   │   └── Smart Healthcare - Daily Lifestyle Dataset...csv** | File | The initial raw dataset from the wearable device. |
+| **│   ├── cleaned/** | Directory | Datasets after initial cleaning and standardization. |
+| **│   │   └── canonical_dataset.csv** | File | The cleaned, consistent dataset ready for processing. |
+| **│   ├── processed/** | Directory | Datasets after feature engineering and processing. |
+| **│   │   ├── feature_dataset.csv** | File | Dataset with engineered features, before clustering. |
+| **│   │   └── feature_dataset_with_cluster.csv** | File | Dataset including the assigned cluster labels. |
+| **├── src/** | Directory | Contains all source code for the project pipeline. |
+| **│   ├── data_preprocessing.py** | File | Scripts for data cleaning and transformation. |
+| **│   ├── feature_engineering.py** | File | Scripts for creating new features from raw data. |
+| **│   ├── model_training.py** | File | Scripts for training, hyperparameter tuning, and evaluation. |
+| **│   ├── shap_explainability.py** | File | Scripts for generating SHAP-based model explanations. |
+| **│   └── utils.py** | File | Common utility functions used across the project. |
+| **├── outputs/** | Directory | Stores generated visualizations and analysis artifacts. |
+| **│   ├── correlation_heatmap.png** | File | Visualization of feature correlations. |
+| **│   ├── shap_rf_summary.png** | File | Summary plot of SHAP values for the Random Forest model. |
+| **│   ├── shap_rf_detailed.png** | File | Detailed force/waterfall plot of SHAP for the RF model. |
+| **│   ├── shap_xgb_summary.png** | File | Summary plot of SHAP values for the XGBoost model. |
+| **│   ├── shap_xgb_detailed.png** | File | Detailed force/waterfall plot of SHAP for the XGBoost model. |
+| **│   ├── shap_lgbm_summary.png** | File | Summary plot of SHAP values for the LightGBM model. |
+| **│   ├── shap_lgbm_detailed.png** | File | Detailed force/waterfall plot of SHAP for the LightGBM model. |
+| **│   ├── shap_ensemble_summary.png** | File | Summary plot of SHAP values for the Ensemble model. |
+| **│   ├── shap_ensemble_detailed.png** | File | Detailed force/waterfall plot of SHAP for the Ensemble model. |
+| **│   └── model_comparison.png** | File | Visualization comparing the performance of all models. |
+| **└── models/** | Directory | Stores trained and serialized machine learning models. |
+| **    ├── random_forest_model.pkl** | File | The saved Random Forest model object. |
+| **    ├── xgboost_model.pkl** | File | The saved XGBoost model object. |
+| **    ├── lightgbm_model.pkl** | File | The saved LightGBM model object. |
+| **    └── ensemble_model.pkl** | File | The saved Ensemble model object. |
 
 ---
 
