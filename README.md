@@ -46,35 +46,35 @@ We use the **Smart Healthcare – DailyLife Dataset (Wearable Device)** from Kag
 ---
 
 ## Folder Structure
-Wearable-Data-Fusion/
-README.md
-requirements.txt
-.gitignore
-data/
-data/raw/
-data/raw/Smart Healthcare - Daily Lifestyle Dataset (Wearable device) (1).csv
-data/cleaned/
-data/cleaned/canonical_dataset.csv
-data/processed/
-data/processed/feature_dataset.csv
-data/processed/feature_dataset_with_cluster.csv
-src/
-src/data_preprocessing.py
-src/feature_engineering.py
-src/model_training.py
-src/shap_explainability.py
-src/utils.py
-outputs/
-outputs/correlation_heatmap.png
-outputs/shap_rf_summary.png
-outputs/shap_rf_detailed.png
-outputs/shap_xgb_summary.png
-outputs/shap_xgb_detailed.png
-outputs/shap_lgbm_summary.png
-outputs/shap_lgbm_detailed.png
-outputs/shap_ensemble_summary.png
-outputs/shap_ensemble_detailed.png
-outputs/model_comparison.png
+|Wearable-Data-Fusion/
+|README.md
+|requirements.txt
+|.gitignore
+|data/
+|data/raw/
+|data/raw/Smart Healthcare - Daily Lifestyle Dataset (Wearable device) (1).csv
+|data/cleaned/
+|data/cleaned/canonical_dataset.csv
+|data/processed/
+|data/processed/feature_dataset.csv
+|data/processed/feature_dataset_with_cluster.csv
+|src/
+|src/data_preprocessing.py
+|src/feature_engineering.py
+|src/model_training.py
+|src/shap_explainability.py
+|src/utils.py
+|outputs/
+|outputs/correlation_heatmap.png
+|outputs/shap_rf_summary.png
+|outputs/shap_rf_detailed.png
+|outputs/shap_xgb_summary.png
+|outputs/shap_xgb_detailed.png
+|outputs/shap_lgbm_summary.png
+|outputs/shap_lgbm_detailed.png
+|outputs/shap_ensemble_summary.png
+|outputs/shap_ensemble_detailed.png
+|outputs/model_comparison.png
 
 
 ---
