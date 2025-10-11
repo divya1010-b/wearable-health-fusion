@@ -47,13 +47,45 @@ We use the **Smart Healthcare – DailyLife Dataset (Wearable Device)** from Kag
 
 ## Folder Structure
 
-├── data/
-│ ├── raw/ # Original Kaggle CSV (not versioned)
-│ ├── cleaned/ # Canonical cleaned dataset (Phase 0)
-│ └── features/ # Feature-engineered dataset (Phase 1)
-
-├── requirements.txt # Required Python packages
-└── README.md
+Wearable-Data-Fusion/
+│
+├── 📄 README.md
+├── 📄 requirements.txt
+├── 📄 .gitignore
+│
+├── 📁 data/
+│   ├── raw/
+│   │   └── Smart Healthcare - Daily Lifestyle Dataset (Wearable device) (1).csv
+│   ├── cleaned/
+│   │   └── canonical_dataset.csv
+│   ├── processed/
+│   │   ├── feature_dataset.csv
+│   │   └── feature_dataset_with_cluster.csv
+│   
+├── 📁 src/
+│   ├── data_preprocessing.py
+│   ├── feature_engineering.py
+│   ├── model_training.py
+│   ├── shap_explainability.py
+│   └── utils.py
+│
+├── 📁 outputs/
+│   ├── correlation_heatmap.png
+│   ├── shap_rf_summary.png
+│   ├── shap_rf_detailed.png
+│   ├── shap_xgb_summary.png
+│   ├── shap_xgb_detailed.png
+│   ├── shap_lgbm_summary.png
+│   ├── shap_lgbm_detailed.png
+│   ├── shap_ensemble_summary.png
+│   ├── shap_ensemble_detailed.png
+│   └── model_comparison.png
+│
+└── 📁 models/
+    ├── random_forest_model.pkl
+    ├── xgboost_model.pkl
+    ├── lightgbm_model.pkl
+    └── ensemble_model.pkl
 
 ---
 
@@ -78,9 +110,17 @@ We use the **Smart Healthcare – DailyLife Dataset (Wearable Device)** from Kag
 - Labeling for anomaly detection based on **heuristic thresholds**  
   - Steps < 2000 or > 20,000 → abnormal  
   - Sleep < 300 min or > 600 min → abnormal  
-  - Heart rate / SpO₂ outside normal range → abnormal  
+  - Heart rate / SpO₂ outside normal range → abnormal
+  -  Applied **K-Means clustering** and rule-based labeling for health risk levels 
 
-Deliverables for Phase 0 & 1:  
+### **Phase 2 – Predictive Modeling & Explainability**
+- Trained multiple ML models:
+  - Random Forest
+  - XGBoost
+  - LightGBM  
+  - Ensemble (weighted average)
+- Compared model performance using accuracy, precision, and recall metrics  
+- Used **SHAP explainability** to interpret feature importance and risk contributions  
+- Visualized feature influence for each model (summary and detailed plots)
 
-- `data/cleaned/canonical_dataset.csv`  
-- `data/features/feature_dataset.csv`  
+---
