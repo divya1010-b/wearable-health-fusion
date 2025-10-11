@@ -46,7 +46,7 @@ We use the **Smart Healthcare – DailyLife Dataset (Wearable Device)** from Kag
 ---
 
 ## Folder Structure
-
+'''
 Wearable-Data-Fusion/
 │
 ├── 📄 README.md
@@ -87,6 +87,7 @@ Wearable-Data-Fusion/
     ├── lightgbm_model.pkl
     └── ensemble_model.pkl
 
+'''
 ---
 
 ## Phase 0 — Setup & Exploration
