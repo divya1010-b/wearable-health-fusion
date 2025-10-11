@@ -46,48 +46,37 @@ We use the **Smart Healthcare – DailyLife Dataset (Wearable Device)** from Kag
 ---
 
 ## Folder Structure
-'''
 Wearable-Data-Fusion/
-│
-├── 📄 README.md
-├── 📄 requirements.txt
-├── 📄 .gitignore
-│
-├── 📁 data/
-│   ├── raw/
-│   │   └── Smart Healthcare - Daily Lifestyle Dataset (Wearable device) (1).csv
-│   ├── cleaned/
-│   │   └── canonical_dataset.csv
-│   ├── processed/
-│   │   ├── feature_dataset.csv
-│   │   └── feature_dataset_with_cluster.csv
-│   
-├── 📁 src/
-│   ├── data_preprocessing.py
-│   ├── feature_engineering.py
-│   ├── model_training.py
-│   ├── shap_explainability.py
-│   └── utils.py
-│
-├── 📁 outputs/
-│   ├── correlation_heatmap.png
-│   ├── shap_rf_summary.png
-│   ├── shap_rf_detailed.png
-│   ├── shap_xgb_summary.png
-│   ├── shap_xgb_detailed.png
-│   ├── shap_lgbm_summary.png
-│   ├── shap_lgbm_detailed.png
-│   ├── shap_ensemble_summary.png
-│   ├── shap_ensemble_detailed.png
-│   └── model_comparison.png
-│
-└── 📁 models/
-    ├── random_forest_model.pkl
-    ├── xgboost_model.pkl
-    ├── lightgbm_model.pkl
-    └── ensemble_model.pkl
+README.md
+requirements.txt
+.gitignore
+data/
+data/raw/
+data/raw/Smart Healthcare - Daily Lifestyle Dataset (Wearable device) (1).csv
+data/cleaned/
+data/cleaned/canonical_dataset.csv
+data/processed/
+data/processed/feature_dataset.csv
+data/processed/feature_dataset_with_cluster.csv
+src/
+src/data_preprocessing.py
+src/feature_engineering.py
+src/model_training.py
+src/shap_explainability.py
+src/utils.py
+outputs/
+outputs/correlation_heatmap.png
+outputs/shap_rf_summary.png
+outputs/shap_rf_detailed.png
+outputs/shap_xgb_summary.png
+outputs/shap_xgb_detailed.png
+outputs/shap_lgbm_summary.png
+outputs/shap_lgbm_detailed.png
+outputs/shap_ensemble_summary.png
+outputs/shap_ensemble_detailed.png
+outputs/model_comparison.png
 
-'''
+
 ---
 
 ## Phase 0 — Setup & Exploration
