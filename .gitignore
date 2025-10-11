@@ -1,6 +1,4 @@
-# Data - don’t upload full datasets
-data/raw/
-data/cleaned/
+
 
 # Python cache
 __pycache__/
