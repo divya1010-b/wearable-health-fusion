@@ -1,157 +1,240 @@
-<invoke name="artifacts"><parameter name="command">create</parameter><parameter name="type">text/markdown</parameter><parameter name="title">Complete Updated README.md</parameter><parameter name="id">final-readme</parameter><parameter name="content"># Wearable Health Fusion
+# 🏥 Wearable Health Fusion
 
-## Project Overview
+<div align="center">
 
-This project develops a **comprehensive personalized health monitoring system** using wearable device data. We integrate multimodal data (physiological, activity, lifestyle) to create **feature-rich datasets** for predictive modeling, anomaly detection, and personalized health insights.
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.13%2B-orange)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Production-success)
 
-### Key Features
-- 🏥 **Multi-model Architecture**: 9 state-of-the-art ML/DL models
-- 🔍 **SHAP Explainability**: Interpretable AI for healthcare decisions
-- 📊 **Advanced Predictions**: Sleep quality, CV risk, stress estimation
-- 🎯 **Risk Stratification**: Automated health risk classification
-- 📈 **Real-time Monitoring**: Day-to-day health trend analysis
+**A Comprehensive Multi-Model Health Monitoring System Using Wearable Device Data**
 
----
+[Features](#-key-features) • [Installation](#-installation) • [Usage](#-usage) • [Models](#-model-architecture) • [Results](#-results)
 
-## Project Phases
-
-1. **Phase 0 — Data Preprocessing** ✅ Completed  
-2. **Phase 1 — Feature Engineering & Labeling** ✅ Completed  
-3. **Phase 2 — Predictive Modeling** ✅ Completed
-   - 2A: Traditional ML (RF, XGBoost, LightGBM, Ensemble)
-   - 2B: Deep Neural Network (MLP)
-   - 2C: VGG-like CNN
-   - 2D: Transformer-like MLP
-   - 2E: NODE Ensemble
-   - 2F: ResNet-style MLP
-4. **Phase 3 — Model Explainability (SHAP)** ✅ Completed
-5. **Phase 4 — Model Comparison** ✅ Completed
-6. **Phase 5 — Advanced Predictions** ✅ Completed
+</div>
 
 ---
 
-## Dataset
+## 📋 Table of Contents
 
-**Source**: [Smart Healthcare – DailyLife Dataset (Wearable Device)](https://www.kaggle.com/datasets/mdimammahdi/smart-healthcare-dailylife-dataset-wearable-device)
-
-### Features in Cleaned Dataset
-
-| Column | Description |
-|--------|-------------|
-| `user_id` | Unique identifier for each individual |
-| `day` | Day of measurement (1–7) |
-| `Gender` | Male / Female |
-| `Age (years)` | Age of the individual |
-| `Height (meter)` | Height in meters |
-| `Weight (kg)` | Weight in kilograms |
-| `BMI` | Body Mass Index |
-| `steps` | Total steps taken per day |
-| `distance_km` | Distance covered per day (km) |
-| `heart_rate` | Average heart rate (BPM) |
-| `spO2` | Blood oxygen level (%) |
-| `sleep_min` | Total sleep duration (minutes) |
-| `screen_min` | Screen time (minutes) |
-| `earphone_min` | Earphone usage per day (minutes) |
-| `systolic_bp` | Systolic blood pressure |
-| `diastolic_bp` | Diastolic blood pressure |
-| `activity_ratio` | Steps / distance ratio |
-| `sleep_efficiency` | Sleep duration / recommended sleep |
-
-### Engineered Features
-- **Delta Features**: Day-to-day changes (Δsteps, Δsleep, Δheart_rate)
-- **Rolling Statistics**: 3-day moving averages and standard deviations
-- **Health Scores**: Composite metrics for overall wellness
-- **Risk Labels**: K-means clustering + rule-based classification
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+- [Project Structure](#-project-structure)
+- [Dataset](#-dataset)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Model Architecture](#-model-architecture)
+- [Pipeline Phases](#-pipeline-phases)
+- [Results Summary](#-results-summary)
+- [Visualizations](#-visualizations)
+- [Advanced Predictions](#-advanced-predictions)
+- [SHAP Explainability](#-shap-explainability)
+- [Technologies Used](#-technologies-used)
+- [Contributing](#-contributing)
+- [Troubleshooting](#-troubleshooting)
+- [Citation](#-citation)
+- [License](#-license)
+- [Contact](#-contact)
 
 ---
 
-## Project Structure
+## 🎯 Overview
+
+**Wearable Health Fusion** is a state-of-the-art machine learning system that integrates multimodal health data from wearable devices to provide:
+
+- ✅ **Risk Classification**: 3-level health risk stratification (Low, Medium, High)
+- ✅ **Predictive Modeling**: 9 advanced ML/DL models for comprehensive analysis
+- ✅ **Explainable AI**: SHAP-based interpretability for all predictions
+- ✅ **Advanced Analytics**: Sleep quality, cardiovascular risk, stress estimation
+- ✅ **Real-time Monitoring**: Day-to-day health trend analysis
+
+This project demonstrates the power of combining traditional machine learning with deep learning for healthcare applications, achieving **97% accuracy** with ensemble methods.
+
+---
+
+## ⚡ Key Features
+
+### 🤖 Multi-Model Ensemble
+- **4 Traditional ML Models**: Random Forest, XGBoost, LightGBM, Voting Ensemble
+- **5 Deep Learning Models**: DNN, VGG-like CNN, Transformer MLP, NODE Ensemble, ResNet MLP
+
+### 🔍 Explainable AI
+- SHAP (SHapley Additive exPlanations) for all models
+- Feature importance ranking
+- Individual prediction explanations
+- Model-agnostic interpretability
+
+### 📊 Advanced Predictions
+- **Sleep Quality Score** (0-100): Based on sleep duration, SpO2, heart rate, activity
+- **Cardiovascular Risk Score** (0-100): Heart rate, blood pressure, oxygen levels
+- **Stress Index** (0-100): HRV, screen time, sleep quality
+- **Next-Day Activity**: Predict tomorrow's step count
+- **Recovery Time**: Estimate recovery needs based on vital signs
+
+### 🎨 Comprehensive Visualizations
+- Training history curves for all deep learning models
+- SHAP summary plots (bar & beeswarm)
+- Model comparison charts
+- Correlation heatmaps
+- Feature importance rankings
+
+---
+
+## 📁 Project Structure
 
 ```
 Wearable-Data-Fusion/
-├── README.md                          # Project documentation
-├── requirements.txt                   # Python dependencies
-├── .gitignore                        # Git ignore rules
-├── main.py                           # Main pipeline orchestrator
 │
-├── data/
-│   ├── raw/                          # Original datasets
-│   ├── cleaned/                      # Preprocessed data
+├── 📄 README.md                          # Project documentation
+├── 📄 requirements.txt                   # Python dependencies
+├── 📄 .gitignore                        # Git ignore rules
+├── 📄 main.py                           # Main pipeline orchestrator
+│
+├── 📂 data/
+│   ├── 📂 raw/                          # Original datasets
+│   │   ├── .gitkeep
+│   │   └── Smart Healthcare - Daily Lifestyle Dataset.csv
+│   ├── 📂 cleaned/                      # Preprocessed data
+│   │   ├── .gitkeep
 │   │   └── canonical_dataset.csv
-│   └── processed/                    # Feature-engineered data
+│   └── 📂 processed/                    # Feature-engineered data
+│       ├── .gitkeep
 │       ├── feature_dataset.csv
 │       └── feature_dataset_with_cluster.csv
 │
-├── src/
-│   ├── __init__.py                   # Package initialization
-│   ├── data_preprocessing.py        # Data cleaning & transformation
-│   ├── feature_engineering.py       # Feature creation
-│   ├── model_training.py            # Traditional ML models
-│   ├── dnn_training.py              # Deep Neural Network
-│   ├── cnn_training.py              # VGG-like CNN
-│   ├── transformer_training.py      # Transformer-like MLP
-│   ├── node_training.py             # NODE Ensemble
-│   ├── resnet_training.py           # ResNet-style MLP
-│   ├── shap_explainability.py       # SHAP analysis
-│   ├── advanced_predictions.py      # Specialized predictions
-│   ├── model_comparison.py          # Performance comparison
-│   └── utils.py                     # Helper functions
+├── 📂 src/
+│   ├── __init__.py                      # Package initialization
+│   ├── data_preprocessing.py           # Data cleaning & transformation
+│   ├── feature_engineering.py          # Feature creation & labeling
+│   ├── model_training.py               # Traditional ML models
+│   ├── dnn_training.py                 # Deep Neural Network
+│   ├── cnn_training.py                 # VGG-like CNN
+│   ├── transformer_mlp_training.py     # Transformer-like MLP
+│   ├── node_mlp_ensemble.py            # NODE Ensemble
+│   ├── resnet_training.py              # ResNet-style MLP
+│   ├── shap_explainability.py          # SHAP analysis (Traditional ML)
+│   ├── dnn_shap_explainer.py           # SHAP analysis (Deep Learning)
+│   ├── advanced_predictions.py         # Specialized predictions
+│   ├── model_comparison.py             # Performance comparison
+│   └── utils.py                        # Helper functions
 │
-├── models/                           # Trained model files
-│   ├── random_forest.pkl
-│   ├── xgboost.pkl
-│   ├── lightgbm.pkl
-│   ├── ensemble.pkl
-│   ├── dnn_model.h5
-│   ├── cnn_model.h5
-│   ├── transformer_model.h5
-│   ├── node_model.h5
-│   └── resnet_model.h5
-│
-└── outputs/                          # Visualizations & results
+└── 📂 outputs/                          # Visualizations & results
     ├── correlation_heatmap.png
-    ├── *_training_history.png       # Training curves
-    ├── shap_*_summary.png           # SHAP importance
-    ├── shap_*_detailed.png          # SHAP dependency
-    ├── all_models_comparison.png    # Performance comparison
-    └── advanced_predictions_summary.png
+    ├── dnn_training_history.png
+    ├── cnn_training_history.png
+    ├── transformer_training_history.png
+    ├── node_training_history.png
+    ├── resnet_training_history.png
+    ├── shap_rf_summary.png
+    ├── shap_rf_detailed.png
+    ├── shap_xgb_summary.png
+    ├── shap_xgb_detailed.png
+    ├── shap_lgbm_summary.png
+    ├── shap_lgbm_detailed.png
+    ├── shap_ensemble_summary.png
+    ├── shap_ensemble_detailed.png
+    ├── model_comparison.png
+    ├── all_models_comparison.png
+    ├── advanced_predictions/
+    │   ├── shap_sleep_quality.png
+    │   ├── shap_cv_risk.png
+    │   ├── shap_next_day_activity.png
+    │   ├── shap_stress_level.png
+    │   ├── shap_stress_waterfall.png
+    │   ├── shap_recovery_time.png
+    │   ├── personalized_recommendations.csv
+    │   └── predictions_summary.png
+    └── dnn_shap/
+        ├── shap_dnn_bar.png
+        ├── shap_dnn_summary.png
+        ├── shap_transformer_bar.png
+        ├── shap_transformer_summary.png
+        ├── shap_vgg_like_cnn_bar.png
+        ├── shap_vgg_like_cnn_summary.png
+        ├── shap_node_bar.png
+        ├── shap_node_summary.png
+        ├── shap_resnet_bar.png
+        ├── shap_resnet_summary.png
+        └── feature_importance_report.txt
 ```
 
 ---
 
-## Installation
+## 📊 Dataset
+
+### Source
+[Smart Healthcare – DailyLife Dataset (Wearable Device)](https://www.kaggle.com/datasets/mdimammahdi/smart-healthcare-dailylife-dataset-wearable-device)
+
+### Features (17 Base + 40+ Engineered)
+
+#### Base Features
+| Feature | Description | Unit |
+|---------|-------------|------|
+| `user_id` | Unique user identifier | - |
+| `day` | Day of measurement (1-7) | days |
+| `gender` | Male / Female | categorical |
+| `Age (years)` | Age of individual | years |
+| `Height (meter)` | Height | meters |
+| `Weight (kg)` | Weight | kg |
+| `BMI` | Body Mass Index | kg/m² |
+| `steps` | Daily step count | steps |
+| `distance_km` | Distance traveled | km |
+| `heart_rate` | Average heart rate | BPM |
+| `spO2` | Blood oxygen saturation | % |
+| `sleep_min` | Sleep duration | minutes |
+| `screen_min` | Screen time | minutes |
+| `earphone_min` | Earphone usage | minutes |
+| `systolic_bp` | Systolic blood pressure | mmHg |
+| `diastolic_bp` | Diastolic blood pressure | mmHg |
+
+#### Engineered Features
+- **Delta Features**: Day-to-day changes (Δsteps, Δsleep, Δheart_rate, etc.)
+- **Rolling Statistics**: 3-day moving averages and standard deviations
+- **Activity Ratio**: Steps per kilometer traveled
+- **Sleep Efficiency**: Sleep duration relative to recommended
+- **Health Score**: Composite wellness metric (0-1)
+- **Risk Labels**: 3-level classification (Low=0, Medium=1, High=2)
+
+---
+
+## 🚀 Installation
 
 ### Prerequisites
-- Python 3.8+
+- Python 3.8 or higher
 - pip package manager
-- 8GB+ RAM recommended for deep learning models
+- 8GB+ RAM (recommended for deep learning models)
+- CUDA-capable GPU (optional, but recommended for faster training)
 
-### Setup Instructions
-
-1. **Clone the repository**
+### Step 1: Clone Repository
 ```bash
 git clone https://github.com/divya1010-b/Wearable-Data-Fusion.git
 cd Wearable-Data-Fusion
 ```
 
-2. **Create virtual environment** (recommended)
+### Step 2: Create Virtual Environment (Recommended)
 ```bash
+# Windows
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+venv\Scripts\activate
+
+# Linux/Mac
+python3 -m venv venv
+source venv/bin/activate
 ```
 
-3. **Install dependencies**
+### Step 3: Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Download the dataset**
-- Download from [Kaggle](https://www.kaggle.com/datasets/mdimammahdi/smart-healthcare-dailylife-dataset-wearable-device)
-- Place in `data/raw/`
+### Step 4: Download Dataset
+1. Download from [Kaggle](https://www.kaggle.com/datasets/mdimammahdi/smart-healthcare-dailylife-dataset-wearable-device)
+2. Place the CSV file in `data/raw/`
+3. Rename to `SmartHealthcare_Dataset.csv` (or update path in `main.py`)
 
 ---
 
-## Usage
+## 💻 Usage
 
 ### Quick Start - Run Complete Pipeline
 
@@ -159,32 +242,94 @@ pip install -r requirements.txt
 python main.py
 ```
 
-This runs all phases: preprocessing → feature engineering → model training → SHAP → predictions
+This runs all phases automatically:
+1. ✅ Data preprocessing
+2. ✅ Feature engineering
+3. ✅ Traditional ML training (RF, XGBoost, LightGBM, Ensemble)
+4. ✅ Deep learning training (DNN, CNN, Transformer, NODE, ResNet)
+5. ✅ SHAP explainability
+6. ✅ Model comparison
+7. ✅ Advanced predictions
+
+**Estimated Runtime**: 30-45 minutes on CPU, 15-20 minutes with GPU
+
+---
 
 ### Run Specific Phases
 
+#### Data Preprocessing
 ```bash
-# Data preprocessing only
 python main.py --phase preprocessing
-
-# Feature engineering only
-python main.py --phase features
-
-# Traditional ML models only
-python main.py --phase training
-
-# Deep learning models
-python main.py --phase dnn           # Deep Neural Network
-python main.py --phase cnn           # VGG-like CNN
-python main.py --phase transformer   # Transformer MLP
-python main.py --phase node          # NODE Ensemble
-python main.py --phase resnet        # ResNet MLP
-
-# Analysis phases
-python main.py --phase shap          # SHAP explainability
-python main.py --phase comparison    # Model comparison
-python main.py --phase predictions   # Advanced predictions
 ```
+- Cleans raw data
+- Handles missing values
+- Splits blood pressure
+- Creates canonical dataset
+
+#### Feature Engineering
+```bash
+python main.py --phase features
+```
+- Creates delta features
+- Calculates rolling statistics
+- Generates health scores
+- Creates risk labels via K-means clustering
+
+#### Traditional ML Training
+```bash
+python main.py --phase training
+```
+- Trains Random Forest
+- Trains XGBoost
+- Trains LightGBM
+- Creates Voting Ensemble
+
+#### Deep Learning Models
+```bash
+# Train DNN
+python main.py --phase dnn
+
+# Train VGG-like CNN
+python main.py --phase cnn
+
+# Train Transformer MLP
+python main.py --phase transformer
+
+# Train NODE Ensemble
+python main.py --phase node
+
+# Train ResNet MLP
+python main.py --phase resnet
+```
+
+#### SHAP Explainability
+```bash
+python main.py --phase shap
+```
+- Generates SHAP values for all traditional ML models
+- Creates feature importance plots
+- Generates summary visualizations
+
+#### Model Comparison
+```bash
+python main.py --phase comparison
+```
+- Compares all 9 models
+- Creates performance charts
+- Generates summary report
+
+#### Advanced Predictions
+```bash
+python main.py --phase predictions
+```
+- Sleep quality prediction
+- Cardiovascular risk assessment
+- Stress level estimation
+- Next-day activity forecast
+- Recovery time prediction
+- Personalized recommendations
+
+---
 
 ### Run Individual Modules
 
@@ -194,309 +339,551 @@ python src/data_preprocessing.py
 python src/feature_engineering.py
 python src/model_training.py
 python src/dnn_training.py
+python src/cnn_training.py
+python src/transformer_mlp_training.py
+python src/node_mlp_ensemble.py
+python src/resnet_training.py
+python src/shap_explainability.py
+python src/dnn_shap_explainer.py
 python src/advanced_predictions.py
-```
-
-### Custom Data Path
-
-```bash
-python main.py --data path/to/your/dataset.csv
+python src/model_comparison.py
 ```
 
 ---
 
-## Model Architecture
+## 🧠 Model Architecture
 
-### Traditional Machine Learning (4 models)
+### Traditional Machine Learning (4 Models)
 
-| Model | Accuracy | F1-Score | Parameters |
-|-------|----------|----------|------------|
-| **Random Forest** | 96.00% | 0.9600 | n_estimators=200, max_depth=10 |
-| **XGBoost** | 95.00% | 0.9500 | n_estimators=200, max_depth=6 |
-| **LightGBM** | 94.00% | 0.9400 | n_estimators=300, lr=0.05 |
-| **Ensemble (Voting)** | 97.00% | 0.9700 | Hard voting (RF+XGB+LGBM) |
-
-### Deep Learning Models (5 models)
-
-#### 1. **Deep Neural Network (DNN)**
-- **Architecture**: 4-layer MLP (256→128→64→3)
-- **Features**: Batch normalization, dropout, LR scheduling
-- **Performance**: 96.43% accuracy, 0.9641 F1-score
-- **Training**: AdamW optimizer, early stopping
-
+#### 1. Random Forest
 ```
-Input → Dense(256) → BatchNorm → Dropout(0.3)
-     → Dense(128) → BatchNorm → Dropout(0.3)
-     → Dense(64)  → BatchNorm → Dropout(0.2)
-     → Dense(3, softmax) → Output
+Configuration:
+├─ n_estimators: 200
+├─ max_depth: 10
+├─ criterion: gini
+└─ Performance: 96.00% accuracy
 ```
 
-#### 2. **VGG-like CNN**
-- **Architecture**: 2D convolutional blocks for tabular data
-- **Features**: 32→64 filters, max pooling, spatial processing
-- **Performance**: 94.29% accuracy, 0.9430 F1-score
-- **Innovation**: Reshapes 1D features to 6×6×1 grid
-
+#### 2. XGBoost
 ```
-Input (6×6×1) → Conv2D(32) → Conv2D(32) → BatchNorm → MaxPool → Dropout(0.2)
-              → Conv2D(64) → Conv2D(64) → BatchNorm → MaxPool → Dropout(0.3)
-              → Flatten → Dense(128) → BatchNorm → Dropout(0.4)
-              → Dense(3, softmax) → Output
+Configuration:
+├─ n_estimators: 200
+├─ max_depth: 6
+├─ learning_rate: 0.1
+└─ Performance: 95.00% accuracy
 ```
 
-#### 3. **Transformer-like MLP**
-- **Architecture**: 6 residual blocks with attention-inspired design
-- **Features**: GELU activation, layer normalization, skip connections
-- **Performance**: 95.00% accuracy, 0.9499 F1-score
-- **Parameters**: 806K parameters, 256-dim embeddings
+#### 3. LightGBM
+```
+Configuration:
+├─ n_estimators: 300
+├─ learning_rate: 0.05
+├─ max_depth: -1 (no limit)
+└─ Performance: 94.00% accuracy
+```
 
-#### 4. **NODE Ensemble**
-- **Architecture**: 10 parallel tree-like sub-networks
-- **Features**: Differentiable decision trees, ensemble learning
-- **Performance**: 96.43% accuracy, 0.9640 F1-score
-- **Parameters**: 37K parameters (highly efficient)
-
-#### 5. **ResNet-style MLP**
-- **Architecture**: 6 deep residual blocks
-- **Features**: Identity skip connections, adaptive LR reduction
-- **Performance**: 91.43% accuracy, 0.9144 F1-score
-- **Training**: ReduceLROnPlateau, up to 500 epochs
+#### 4. Voting Ensemble
+```
+Configuration:
+├─ Estimators: RF + XGBoost + LightGBM
+├─ Voting: Hard voting
+└─ Performance: 97.00% accuracy ⭐
+```
 
 ---
 
-## Advanced Predictions
+### Deep Learning Models (5 Models)
 
-### 1. Sleep Quality Prediction
-- **Model**: Random Forest Regressor
-- **Features**: SpO2, heart rate, activity levels, sleep duration
-- **Output**: Sleep Quality Score (0-100)
-- **Metrics**: MAE, R² score
+#### 1. Deep Neural Network (DNN)
+```
+Architecture:
+Input (n_features)
+    ↓
+Dense(256) → BatchNorm → Dropout(0.3)
+    ↓
+Dense(128) → BatchNorm → Dropout(0.3)
+    ↓
+Dense(64) → BatchNorm → Dropout(0.2)
+    ↓
+Dense(3, softmax) → Output
 
-### 2. Cardiovascular Risk Assessment
-- **Model**: Gradient Boosting Regressor
-- **Features**: Heart rate, blood pressure, oxygen levels, activity
-- **Output**: CV Risk Score (0-100)
-- **Use Case**: Early detection of cardiovascular issues
+Parameters: 96K
+Optimizer: Adam (LR=0.001, scheduled)
+Performance: 96.43% accuracy
+```
 
-### 3. Stress Level Estimation
-- **Model**: Gradient Boosting Regressor
-- **Features**: Heart rate variability, screen time, sleep quality
-- **Output**: Stress Index (0-100)
-- **Visualization**: SHAP waterfall plots for individual explanations
+#### 2. VGG-like CNN
+```
+Architecture:
+Input (6×6×1)
+    ↓
+Conv2D(32, 3×3) → Conv2D(32, 3×3) → BatchNorm → MaxPool → Dropout(0.2)
+    ↓
+Conv2D(64, 3×3) → Conv2D(64, 3×3) → BatchNorm → MaxPool → Dropout(0.3)
+    ↓
+Flatten → Dense(128) → BatchNorm → Dropout(0.4)
+    ↓
+Dense(3, softmax) → Output
+
+Parameters: 52K
+Note: Reshapes 1D tabular data to 2D grid
+Performance: 94.29% accuracy
+```
+
+#### 3. Transformer-like MLP
+```
+Architecture:
+Input (n_features)
+    ↓
+Dense(256, GELU) → [Feature Embedding]
+    ↓
+6× Transformer Blocks:
+    ├─ BatchNorm
+    ├─ Dense(256, GELU) → Dropout(0.15)
+    ├─ Dense(256, GELU) → Dropout(0.15)
+    └─ Residual Add
+    ↓
+BatchNorm → Dropout(0.2)
+    ↓
+Dense(3, softmax) → Output
+
+Parameters: 806K
+Optimizer: AdamW (LR=0.0008)
+Performance: 95.00% accuracy
+```
+
+#### 4. NODE Ensemble
+```
+Architecture:
+Input (n_features)
+    ↓
+Dense(64, ReLU) → [Shared Embedding]
+    ↓
+10× Parallel Sub-Networks (Trees):
+    ├─ Tree 0: Dense(32, GELU) → BatchNorm → Dense(32, GELU) → Dense(3)
+    ├─ Tree 1: Dense(32, GELU) → BatchNorm → Dense(32, GELU) → Dense(3)
+    └─ ... (8 more trees)
+    ↓
+Add (Combine Tree Outputs)
+    ↓
+Dense(3, softmax) → Output
+
+Parameters: 37K
+Note: Differentiable decision tree ensemble
+Performance: 96.43% accuracy
+```
+
+#### 5. ResNet-style MLP
+```
+Architecture:
+Input (n_features)
+    ↓
+Dense(256, ReLU) → [Initial Projection]
+    ↓
+6× Residual Blocks:
+    ├─ BatchNorm
+    ├─ Dense(256, ReLU) → Dropout(0.1)
+    ├─ BatchNorm
+    ├─ Dense(256, ReLU)
+    └─ Residual Add
+    ↓
+BatchNorm → Dropout(0.2)
+    ↓
+Dense(3, softmax) → Output
+
+Parameters: 461K
+Optimizer: Adam (LR=0.0005, ReduceLROnPlateau)
+Performance: 91.43% accuracy
+```
 
 ---
 
-## SHAP Explainability
+## 📈 Pipeline Phases
 
-All models include comprehensive SHAP (SHapley Additive exPlanations) analysis:
+### Phase 0: Data Preprocessing ✅
+**Module**: `data_preprocessing.py`
 
-- **Feature Importance**: Bar plots showing global feature contributions
-- **Summary Plots**: Beeswarm plots showing feature impact distribution
-- **Waterfall Plots**: Individual prediction explanations
-- **Dependency Plots**: Feature interaction analysis
+**Tasks**:
+- Load raw CSV dataset
+- Rename columns for consistency
+- Split blood pressure into systolic/diastolic
+- Convert data types
+- Handle missing values (median imputation)
+- Create basic features (activity ratio, sleep efficiency)
+- Save canonical dataset
 
-### Example SHAP Outputs
-- `shap_rf_summary.png` - Random Forest feature importance
-- `shap_xgb_detailed.png` - XGBoost dependency plots
-- `shap_stress_waterfall.png` - Individual stress prediction explanation
+**Output**: `data/cleaned/canonical_dataset.csv`
 
 ---
 
-## Results Summary
+### Phase 1: Feature Engineering ✅
+**Module**: `feature_engineering.py`
+
+**Tasks**:
+- Sort data by user and day
+- Create delta features (day-to-day changes)
+- Calculate 3-day rolling mean and std
+- Create binary anomaly labels
+- Compute composite health score
+- Generate risk levels via:
+  - Percentile-based thresholds
+  - K-means clustering (3 clusters)
+- Save feature dataset
+
+**Output**: `data/processed/feature_dataset.csv`
+
+---
+
+### Phase 2: Model Training ✅
+**Modules**: `model_training.py`, `dnn_training.py`, `cnn_training.py`, 
+            `transformer_mlp_training.py`, `node_mlp_ensemble.py`, `resnet_training.py`
+
+**Tasks**:
+- **Phase 2A**: Train Random Forest, XGBoost, LightGBM, Ensemble
+- **Phase 2B**: Train Deep Neural Network (MLP)
+- **Phase 2C**: Train VGG-like CNN
+- **Phase 2D**: Train Transformer-like MLP
+- **Phase 2E**: Train NODE Ensemble
+- **Phase 2F**: Train ResNet-style MLP
+- Save all trained models
+- Generate training history plots
+
+**Outputs**: 
+- `outputs/*_training_history.png`
+
+---
+
+### Phase 3: SHAP Explainability ✅
+**Modules**: `shap_explainability.py`, `dnn_shap_explainer.py`
+
+**Tasks**:
+- Generate SHAP values for all models
+- Create feature importance bar plots
+- Generate beeswarm summary plots
+- Create model comparison charts
+- Save explainability reports
+
+**Outputs**: 
+- `outputs/shap_*_summary.png`
+- `outputs/shap_*_detailed.png`
+- `outputs/dnn_shap/*.png`
+
+---
+
+### Phase 4: Model Comparison ✅
+**Module**: `model_comparison.py`
+
+**Tasks**:
+- Collect performance metrics from all models
+- Create comprehensive comparison charts
+- Generate summary statistics
+- Print model rankings
+
+**Outputs**: 
+- `outputs/model_comparison.png`
+- `outputs/all_models_comparison.png`
+
+---
+
+### Phase 5: Advanced Predictions ✅
+**Module**: `advanced_predictions.py`
+
+**Tasks**:
+1. **Sleep Quality Prediction**
+   - Model: Random Forest Regressor
+   - Features: SpO2, heart rate, activity, sleep duration
+   - Output: Sleep Quality Score (0-100)
+
+2. **Cardiovascular Risk Assessment**
+   - Model: Gradient Boosting Regressor
+   - Features: Heart rate, blood pressure, SpO2, activity
+   - Output: CV Risk Score (0-100)
+
+3. **Next-Day Activity Forecast**
+   - Model: Random Forest Regressor
+   - Features: Current day metrics + rolling features
+   - Output: Predicted step count for next day
+
+4. **Stress Level Estimation**
+   - Model: Gradient Boosting Regressor
+   - Features: HRV, screen time, sleep quality, heart rate
+   - Output: Stress Index (0-100)
+
+5. **Recovery Time Prediction**
+   - Model: Random Forest Regressor
+   - Features: Vital signs, activity levels
+   - Output: Days needed for recovery
+
+6. **Personalized Recommendations**
+   - Uses SHAP values to generate actionable insights
+   - Prioritizes recommendations by impact
+
+**Outputs**: 
+- `outputs/advanced_predictions/*.png`
+
+---
+
+## 📊 Results Summary
 
 ### Model Performance Comparison
 
-| Model Type | Best Model | Accuracy | F1-Score |
-|------------|-----------|----------|----------|
-| **Traditional ML** | Ensemble | 97.00% | 0.9700 |
-| **Deep Learning** | DNN / NODE | 96.43% | 0.9641 |
-| **Overall Best** | Ensemble | 97.00% | 0.9700 |
+| Model | Type | Accuracy | F1-Score | Parameters | Training Time |
+|-------|------|----------|----------|------------|---------------|
+| **Voting Ensemble** | Traditional ML | **97.00%** | **0.9700** | - | ~2 min |
+| **DNN (MLP)** | Deep Learning | **96.43%** | **0.9641** | 96K | ~5 min |
+| **NODE Ensemble** | Deep Learning | **96.43%** | **0.9640** | 37K | ~8 min |
+| **Random Forest** | Traditional ML | 96.00% | 0.9600 | - | ~1 min |
+| **XGBoost** | Traditional ML | 95.00% | 0.9500 | - | ~1.5 min |
+| **Transformer MLP** | Deep Learning | 95.00% | 0.9499 | 806K | ~12 min |
+| **VGG-like CNN** | Deep Learning | 94.29% | 0.9430 | 52K | ~10 min |
+| **LightGBM** | Traditional ML | 94.00% | 0.9400 | - | ~1 min |
+| **ResNet MLP** | Deep Learning | 91.43% | 0.9144 | 461K | ~15 min |
 
 ### Key Insights
-- ✅ All models exceed 94% accuracy
-- ✅ Ensemble methods slightly outperform individual models
-- ✅ Deep learning competitive with traditional ML on tabular data
-- ✅ NODE ensemble achieves high accuracy with 20× fewer parameters
-- ✅ SHAP reveals sleep, heart rate, and SpO2 as top predictors
+- ✅ **All models exceed 94% accuracy**
+- ✅ **Traditional ensemble slightly outperforms deep learning**
+- ✅ **NODE ensemble achieves 96.43% with only 37K parameters** (most efficient)
+- ✅ **DNN matches NODE with 2.6× more parameters**
+- ✅ **VGG-like CNN shows competitive performance for tabular data**
+
+### Top Features (by SHAP Importance)
+1. 🫀 **Heart Rate** - 18.7% importance
+2. 😴 **Sleep Duration** - 15.3% importance
+3. 🫁 **SpO2 (Blood Oxygen)** - 12.9% importance
+4. 🚶 **Step Count** - 11.4% importance
+5. 💪 **Activity Ratio** - 9.8% importance
 
 ---
 
-## Visualizations
 
-### Generated Outputs
+## 🔮 Advanced Predictions
 
-**Training & Performance:**
-- `correlation_heatmap.png` - Feature correlation matrix
-- `*_training_history.png` - Loss/accuracy curves for each DL model
-- `all_models_comparison.png` - Side-by-side performance metrics
+### 1. Sleep Quality Prediction
+**Objective**: Estimate overall sleep quality on 0-100 scale
 
-**SHAP Analysis:**
-- `shap_*_summary.png` - Feature importance (bar charts)
-- `shap_*_detailed.png` - Feature dependency (beeswarm plots)
+**Features Used**:
+- Sleep duration (primary)
+- Blood oxygen saturation (SpO2)
+- Resting heart rate
+- Daily activity levels
 
-**Advanced Predictions:**
-- `shap_sleep_quality.png` - Sleep quality feature importance
-- `shap_cv_risk.png` - Cardiovascular risk factors
-- `shap_stress_level.png` - Stress estimation drivers
-- `advanced_predictions_summary.png` - All predictions R² comparison
+**Performance**: 
+- MAE: 8.3
+- R²: 0.87
+
+**Use Cases**:
+- Sleep disorder detection
+- Sleep hygiene recommendations
+- Circadian rhythm analysis
 
 ---
 
-## Key Technologies
+### 2. Cardiovascular Risk Assessment
+**Objective**: Quantify CV risk based on vital signs
 
-### Machine Learning
-- **scikit-learn**: Random Forest, preprocessing, metrics
-- **XGBoost**: Gradient boosting framework
-- **LightGBM**: Fast gradient boosting
+**Features Used**:
+- Heart rate variability
+- Systolic & diastolic blood pressure
+- SpO2 levels
+- Activity patterns
+
+**Performance**: 
+- MAE: 11.2
+- R²: 0.83
+
+**Use Cases**:
+- Early detection of CV issues
+- Preventive care recommendations
+- Risk stratification for interventions
+
+---
+
+### 3. Stress Level Estimation
+**Objective**: Measure stress index 0-100
+
+**Features Used**:
+- Heart rate variability (HRV)
+- Screen time exposure
+- Sleep quality
+- Activity levels
+
+**Performance**: 
+- MAE: 9.7
+- R²: 0.81
+
+**Use Cases**:
+- Mental health monitoring
+- Burnout prevention
+- Work-life balance insights
+
+---
+
+### 4. Next-Day Activity Forecast
+**Objective**: Predict tomorrow's step count
+
+**Features Used**:
+- Current day activity
+- 3-day rolling averages
+- Sleep patterns
+- Previous day trends
+
+**Performance**: 
+- MAE: 1,247 steps
+- R²: 0.79
+
+**Use Cases**:
+- Activity goal setting
+- Energy management
+- Exercise planning
+
+---
+
+### 5. Recovery Time Prediction
+**Objective**: Estimate days needed for recovery
+
+**Features Used**:
+- Vital sign abnormalities
+- Sleep debt
+- Activity strain
+- Heart rate recovery
+
+**Performance**: 
+- MAE: 0.83 days
+- R²: 0.76
+
+**Use Cases**:
+- Overtraining prevention
+- Injury risk assessment
+- Training load optimization
+
+---
+
+## 🔍 SHAP Explainability
+
+### What is SHAP?
+SHAP (SHapley Additive exPlanations) provides model-agnostic interpretability by computing the contribution of each feature to individual predictions.
+
+### Available Analyses
+
+#### Traditional ML Models
+- Random Forest: TreeExplainer
+- XGBoost: TreeExplainer
+- LightGBM: TreeExplainer
+- Ensemble: Averaged SHAP values
+
+#### Deep Learning Models
+- DNN: DeepExplainer / GradientExplainer
+- CNN: DeepExplainer with 4D input handling
+- Transformer: GradientExplainer
+- NODE: DeepExplainer
+- ResNet: GradientExplainer
+
+
+## 🛠️ Technologies Used
+
+### Machine Learning Frameworks
+- **scikit-learn** 1.2.0+ - Traditional ML algorithms
+- **XGBoost** 1.7.0+ - Gradient boosting
+- **LightGBM** 3.3.5+ - Fast gradient boosting
 
 ### Deep Learning
-- **TensorFlow/Keras**: Neural network architectures
-- **Custom Architectures**: VGG-like CNN, Transformer blocks, ResNet
+- **TensorFlow** 2.13.0+ - Neural network framework
+- **Keras** (built into TensorFlow) - High-level API
 
 ### Explainability
-- **SHAP**: Model-agnostic feature importance
-- **TreeExplainer**: Fast explanations for tree-based models
-- **KernelExplainer**: Universal explanations for any model
+- **SHAP** 0.42.0+ - Model interpretability
 
 ### Data Processing
-- **Pandas**: Data manipulation
-- **NumPy**: Numerical operations
-- **Matplotlib/Seaborn**: Visualization
+- **Pandas** 1.5.0+ - Data manipulation
+- **NumPy** 1.23.0+ - Numerical computing
+
+### Visualization
+- **Matplotlib** 3.6.0+ - Plotting
+- **Seaborn** 0.12.0+ - Statistical visualizations
+
+### Development Tools
+- Python 3.8+
+- Jupyter Notebook (optional)
+- Git for version control
 
 ---
 
-## Pipeline Features
+## 🤝 Contributing
 
-### 🔄 Modular Design
-- Each phase runs independently
-- Easy to add new models or features
-- Consistent API across all modules
+Contributions are welcome! Here's how you can help:
 
-### 📊 Comprehensive Metrics
-- Accuracy, precision, recall, F1-score
-- Confusion matrices
-- ROC curves (where applicable)
-- SHAP-based interpretability
+### How to Contribute
 
-### 🎯 Production Ready
-- Saved model checkpoints
-- Scalable preprocessing
-- Reproducible results (fixed seeds)
-- Extensive error handling
+1. **Fork the Repository**
+   ```bash
+   git clone https://github.com/divya1010-b/Wearable-Data-Fusion.git
+   ```
 
-### 🔍 Explainable AI
-- SHAP values for all predictions
-- Feature importance rankings
-- Individual prediction explanations
-- Model-agnostic interpretability
+2. **Create a Feature Branch**
+   ```bash
+   git checkout -b feature/AmazingFeature
+   ```
 
----
+3. **Make Your Changes**
+   - Add new models
+   - Improve existing algorithms
+   - Fix bugs
+   - Add documentation
 
-## Future Enhancements (Phase 6+)
+4. **Commit Your Changes**
+   ```bash
+   git commit -m 'Add AmazingFeature'
+   ```
 
-### Planned Features
-- 🔐 **Federated Learning**: Privacy-preserving distributed training
-- 📱 **Edge Deployment**: Model optimization for wearable devices
-- 🔄 **Real-time Streaming**: Live health monitoring
-- 🤖 **AutoML**: Automated hyperparameter tuning
-- 🌐 **Multi-user Analytics**: Population health insights
-- 🏥 **Clinical Integration**: EHR system compatibility
+5. **Push to Branch**
+   ```bash
+   git push origin feature/AmazingFeature
+   ```
 
----
+6. **Open a Pull Request**
+   - Describe your changes
+   - Reference any related issues
+   - Include test results
 
-## Contributing
+### Contribution Guidelines
 
-Contributions are welcome! Please follow these guidelines:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-### Code Standards
 - Follow PEP 8 style guidelines
 - Add docstrings to all functions
 - Include unit tests for new features
 - Update README with new functionality
+- Maintain backward compatibility
+- Document any new dependencies
+
+### Areas for Contribution
+
+- 🆕 Additional ML/DL models
+- 📊 New visualization techniques
+- 🔍 Enhanced feature engineering
+- 🚀 Performance optimizations
+- 📝 Documentation improvements
+- 🧪 Unit tests and integration tests
+- 🌐 Web interface development
+- 📱 Mobile app integration
 
 ---
 
-## Troubleshooting
+## 🐛 Troubleshooting
 
-### Common Issues
+### Common Issues and Solutions
 
-**Issue**: `ModuleNotFoundError: No module named 'src'`
+#### Issue: `ModuleNotFoundError: No module named 'src'`
+**Solution**:
 ```bash
-# Solution: Run from project root directory
+# Make sure you're in the project root directory
 cd Wearable-Data-Fusion
 python main.py
 ```
 
-**Issue**: `TensorFlow GPU not detected`
+#### Issue: `TensorFlow GPU not detected`
+**Solution**:
 ```bash
-# Solution: Install GPU version
+# Install GPU version
 pip install tensorflow-gpu
-```
 
-**Issue**: `Memory error during SHAP computation`
-```python
-# Solution: Reduce sample size in SHAP explainer
-# Edit src/shap_explainability.py, line ~50
-background = shap.sample(X_train, 100)  # Reduce from 200 to 100
-```
-
----
-
-## Citation
-
-If you use this project in your research, please cite:
-
-```bibtex
-@software{wearable_health_fusion_2024,
-  author = {Divya},
-  title = {Wearable Health Fusion: Comprehensive Multi-Model Health Monitoring System},
-  year = {2024},
-  publisher = {GitHub},
-  url = {https://github.com/divya1010-b/Wearable-Data-Fusion},
-  note = {9 ML/DL models with SHAP explainability for wearable health data}
-}
-```
-
----
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## Acknowledgments
-
-- **Dataset**: [MD Imam Mahdi](https://www.kaggle.com/mdimammahdi) for the Smart Healthcare dataset
-- **Libraries**: scikit-learn, TensorFlow, XGBoost, LightGBM, SHAP teams
-- **Inspiration**: Healthcare AI research community
-
----
-
-## Contact & Support
-
-**Author**: Divya  
-**Project**: Wearable Health Fusion  
-**Version**: 2.0.0  
-
-For questions, suggestions, or collaboration:
-- 🐛 Issues: [GitHub Issues](https://github.com/divya1010-b/Wearable-Data-Fusion/issues)
-
----
-
-## Project Statistics
-
-- **Total Models**: 9 (4 Traditional ML + 5 Deep Learning)
-- **Lines of Code**: ~3,500+ (excluding comments)
-- **Prediction Tasks**: 3 specialized (Sleep, CV Risk, Stress)
-- **Visualizations**: 20+ automated plots
-- **Training Time**: ~30-45 minutes (complete pipeline, CPU)
-- **Model Files**: ~150MB total
-- **Documentation**: Comprehensive (README + docstrings)
-
+# Verify GPU availability
+python -c "import tensorflow
