@@ -206,7 +206,7 @@ Wearable-Data-Fusion/
 
 ### Step 1: Clone Repository
 ```bash
-git clone https://github.com/yourusername/Wearable-Data-Fusion.git
+git clone https://github.com/divya1010-b/Wearable-Data-Fusion.git
 cd Wearable-Data-Fusion
 ```
 
