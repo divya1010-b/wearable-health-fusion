@@ -1,0 +1,11 @@
+feature,impact,current_value,recommendation,priority
+screen_min,889.6805476150938,78,Maintain screen_min,High
+heart_rate_roll_std,109.36017865680245,4.041451884327379,Maintain heart_rate_roll_std,High
+sleep_min_roll_std,7.069615987066062,199.1490229283924,Improve sleep_min_roll_std,High
+earphone_min_roll_mean,3.0959087960165794,251.0,Maintain earphone_min_roll_mean,High
+earphone_min_roll_std,3.0485026374674344,83.21057625085888,Improve earphone_min_roll_std,High
+gender_M,3.0171339348875503,True,Maintain gender_M,High
+spO2_roll_std,2.902628312445507,2.4901324534309506,Improve spO2_roll_std,High
+sleep_min_delta,2.6662557123987023,-60.0,Improve sleep_min_delta,High
+CV_Risk_Score,2.1774561765449834,6707.97851273575,Maintain CV_Risk_Score,High
+distance_km_roll_std,1.7598557865228504,1.715459122217723,Improve distance_km_roll_std,Medium

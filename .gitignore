@@ -30,10 +30,24 @@ wheels/
 # VS Code
 .vscode/
 
-# Data files (exclude large raw data)
-data/raw/*.csv
-*.csv
+# Data files - exclude only large raw data
+data/raw/*
+!data/raw/.gitkeep
 
+# Allow cleaned and processed data (if size < 100MB)
+!data/cleaned/.gitkeep
+!data/processed/.gitkeep
+
+# If your CSV files are small enough, allow them
+!data/cleaned/*.csv
+!data/processed/*.csv
+
+# But keep excluding if individual files are too large
+!data/raw/Smart*.csv
+
+# OS files
+.DS_Store
+Thumbs.db
 # But include processed data structure
 !data/cleaned/.gitkeep
 !data/processed/.gitkeep
