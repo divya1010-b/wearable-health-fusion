@@ -206,8 +206,8 @@ Wearable-Data-Fusion/
 
 ### Step 1: Clone Repository
 ```bash
-git clone https://github.com/divya1010-b/Wearable-Data-Fusion.git
-cd Wearable-Data-Fusion
+git clone https://github.com/divya1010-b/Wearable-Health-Fusion.git
+cd Wearable-Health-Fusion
 ```
 
 ### Step 2: Create Virtual Environment (Recommended)
@@ -868,7 +868,7 @@ Contributions are welcome! Here's how you can help:
 
 1. **Fork the Repository**
    ```bash
-   git clone https://github.com/divya1010-b/Wearable-Data-Fusion.git
+   git clone https://github.com/divya1010-b/Wearable-Health-Fusion.git
    ```
 
 2. **Create a Feature Branch**
@@ -927,7 +927,7 @@ Contributions are welcome! Here's how you can help:
 **Solution**:
 ```bash
 # Make sure you're in the project root directory
-cd Wearable-Data-Fusion
+cd Wearable-Health-Fusion
 python main.py
 ```
 
@@ -1015,16 +1015,16 @@ SOFTWARE.
 ---
 
 ### Project Links
-- **Repository**: [https://github.com/divya1010-b/Wearable-Data-Fusion](https://github.com/divya1010-b/Wearable-Data-Fusion)
-- **Issues**: [https://github.com/divya1010-b/Wearable-Data-Fusion/issues](https://github.com/divya1010-b/Wearable-Data-Fusion/issues)
-- **Discussions**: [https://github.com/divya1010-b/Wearable-Data-Fusion/discussions](https://github.com/divya1010-b/Wearable-Data-Fusion/discussions)
+- **Repository**: [https://github.com/divya1010-b/Wearable-Health-Fusion](https://github.com/divya1010-b/Wearable-Health-Fusion)
+- **Issues**: [https://github.com/divya1010-b/Wearable-Health-Fusion/issues](https://github.com/divya1010-b/Wearable-Health-Fusion/issues)
+- **Discussions**: [https://github.com/divya1010-b/Wearable-Health-Fusion/discussions](https://github.com/divya1010-b/Wearable-Health-Fusion/discussions)
 
 ### Support
 For questions, issues, or feature requests:
 1. Check the [Troubleshooting](#-troubleshooting) section
-2. Search existing [GitHub Issues](https://github.com/divya1010-b/Wearable-Data-Fusion/issues)
+2. Search existing [GitHub Issues](https://github.com/divya1010-b/Wearable-Health-Fusion/issues)
 3. Open a new issue if your problem is not covered
-4. Join discussions in the [Discussions tab](https://github.com/divya1010-b/Wearable-Data-Fusion/discussions)
+4. Join discussions in the [Discussions tab](https://github.com/divya1010-b/Wearable-Health-Fusion/discussions)
 
 ---
 
@@ -1038,7 +1038,7 @@ If you use this project in your research or work, please cite:
   title = {Wearable Health Fusion: Multi-Model Health Monitoring System},
   year = {2024},
   publisher = {GitHub},
-  url = {https://github.com/yourusername/Wearable-Data-Fusion}
+  url = {https://github.com/divya1010-d/Wearable-Health-Fusion}
 }
 ```
 
