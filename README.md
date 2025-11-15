@@ -32,7 +32,6 @@
 - [Technologies Used](#-technologies-used)
 - [Contributing](#-contributing)
 - [Troubleshooting](#-troubleshooting)
-- [Citation](#-citation)
 - [License](#-license)
 - [Contact](#-contact)
 
@@ -92,15 +91,14 @@ Wearable-Data-Fusion/
 │
 ├── 📂 data/
 │   ├── 📂 raw/                          # Original datasets
-│   │   ├── .gitkeep
-│   │   └── Smart Healthcare - Daily Lifestyle Dataset.csv
+│   │   └── .gitkeep                     # Placeholder for raw data
 │   ├── 📂 cleaned/                      # Preprocessed data
 │   │   ├── .gitkeep
-│   │   └── canonical_dataset.csv
+│   │   └── canonical_dataset.csv        # Cleaned dataset
 │   └── 📂 processed/                    # Feature-engineered data
 │       ├── .gitkeep
-│       ├── feature_dataset.csv
-│       └── feature_dataset_with_cluster.csv
+│       ├── feature_dataset.csv          # Final feature dataset
+│       └── feature_dataset_with_cluster.csv  # Dataset with clustering
 │
 ├── 📂 src/
 │   ├── __init__.py                      # Package initialization
@@ -116,6 +114,7 @@ Wearable-Data-Fusion/
 │   ├── dnn_shap_explainer.py           # SHAP analysis (Deep Learning)
 │   ├── advanced_predictions.py         # Specialized predictions
 │   ├── model_comparison.py             # Performance comparison
+│   ├── regression.py                   # Health score regression analysis
 │   └── utils.py                        # Helper functions
 │
 └── 📂 outputs/                          # Visualizations & results
@@ -207,7 +206,7 @@ Wearable-Data-Fusion/
 
 ### Step 1: Clone Repository
 ```bash
-git clone https://github.com/divya1010-b/Wearable-Data-Fusion.git
+git clone https://github.com/yourusername/Wearable-Data-Fusion.git
 cd Wearable-Data-Fusion
 ```
 
@@ -230,7 +229,7 @@ pip install -r requirements.txt
 ### Step 4: Download Dataset
 1. Download from [Kaggle](https://www.kaggle.com/datasets/mdimammahdi/smart-healthcare-dailylife-dataset-wearable-device)
 2. Place the CSV file in `data/raw/`
-3. Rename to `SmartHealthcare_Dataset.csv` (or update path in `main.py`)
+3. The pipeline expects the file to be named as downloaded from Kaggle
 
 ---
 
@@ -344,7 +343,6 @@ python src/transformer_mlp_training.py
 python src/node_mlp_ensemble.py
 python src/resnet_training.py
 python src/shap_explainability.py
-python src/dnn_shap_explainer.py
 python src/advanced_predictions.py
 python src/model_comparison.py
 ```
@@ -407,7 +405,7 @@ Dense(64) → BatchNorm → Dropout(0.2)
     ↓
 Dense(3, softmax) → Output
 
-Parameters: 96K
+Parameters: ~96K
 Optimizer: Adam (LR=0.001, scheduled)
 Performance: 96.43% accuracy
 ```
@@ -425,7 +423,7 @@ Flatten → Dense(128) → BatchNorm → Dropout(0.4)
     ↓
 Dense(3, softmax) → Output
 
-Parameters: 52K
+Parameters: ~52K
 Note: Reshapes 1D tabular data to 2D grid
 Performance: 94.29% accuracy
 ```
@@ -447,7 +445,7 @@ BatchNorm → Dropout(0.2)
     ↓
 Dense(3, softmax) → Output
 
-Parameters: 806K
+Parameters: ~806K
 Optimizer: AdamW (LR=0.0008)
 Performance: 95.00% accuracy
 ```
@@ -468,7 +466,7 @@ Add (Combine Tree Outputs)
     ↓
 Dense(3, softmax) → Output
 
-Parameters: 37K
+Parameters: ~37K
 Note: Differentiable decision tree ensemble
 Performance: 96.43% accuracy
 ```
@@ -491,7 +489,7 @@ BatchNorm → Dropout(0.2)
     ↓
 Dense(3, softmax) → Output
 
-Parameters: 461K
+Parameters: ~461K
 Optimizer: Adam (LR=0.0005, ReduceLROnPlateau)
 Performance: 91.43% accuracy
 ```
@@ -549,7 +547,11 @@ Performance: 91.43% accuracy
 - Generate training history plots
 
 **Outputs**: 
-- `outputs/*_training_history.png`
+- `outputs/dnn_training_history.png`
+- `outputs/cnn_training_history.png`
+- `outputs/transformer_training_history.png`
+- `outputs/node_training_history.png`
+- `outputs/resnet_training_history.png`
 
 ---
 
@@ -564,9 +566,15 @@ Performance: 91.43% accuracy
 - Save explainability reports
 
 **Outputs**: 
-- `outputs/shap_*_summary.png`
-- `outputs/shap_*_detailed.png`
-- `outputs/dnn_shap/*.png`
+- `outputs/shap_rf_summary.png`
+- `outputs/shap_rf_detailed.png`
+- `outputs/shap_xgb_summary.png`
+- `outputs/shap_xgb_detailed.png`
+- `outputs/shap_lgbm_summary.png`
+- `outputs/shap_lgbm_detailed.png`
+- `outputs/shap_ensemble_summary.png`
+- `outputs/shap_ensemble_detailed.png`
+- `outputs/dnn_shap/*.png` (Deep learning SHAP plots)
 
 ---
 
@@ -619,7 +627,14 @@ Performance: 91.43% accuracy
    - Prioritizes recommendations by impact
 
 **Outputs**: 
-- `outputs/advanced_predictions/*.png`
+- `outputs/advanced_predictions/shap_sleep_quality.png`
+- `outputs/advanced_predictions/shap_cv_risk.png`
+- `outputs/advanced_predictions/shap_next_day_activity.png`
+- `outputs/advanced_predictions/shap_stress_level.png`
+- `outputs/advanced_predictions/shap_stress_waterfall.png`
+- `outputs/advanced_predictions/shap_recovery_time.png`
+- `outputs/advanced_predictions/personalized_recommendations.csv`
+- `outputs/advanced_predictions/predictions_summary.png`
 
 ---
 
@@ -655,6 +670,37 @@ Performance: 91.43% accuracy
 
 ---
 
+## 📊 Visualizations
+
+The project generates comprehensive visualizations saved in the `outputs/` directory:
+
+### Training History Plots
+- DNN training curves (accuracy & loss)
+- CNN training curves
+- Transformer training curves
+- NODE training curves
+- ResNet training curves
+
+### SHAP Explainability Plots
+- Feature importance bar plots for all models
+- SHAP summary plots (beeswarm) showing feature impacts
+- Model comparison charts
+- Individual prediction explanations (waterfall plots)
+
+### Advanced Prediction Plots
+- Sleep quality prediction SHAP analysis
+- Cardiovascular risk SHAP analysis
+- Stress level prediction with waterfall plot
+- Next-day activity prediction
+- Recovery time prediction
+- Predictions summary comparison
+
+### Correlation & Analysis
+- Feature correlation heatmap
+- Model performance comparison charts
+- All models comprehensive comparison
+
+---
 
 ## 🔮 Advanced Predictions
 
@@ -668,8 +714,8 @@ Performance: 91.43% accuracy
 - Daily activity levels
 
 **Performance**: 
-- MAE: 8.3
-- R²: 0.87
+- MAE: ~8.3
+- R²: ~0.87
 
 **Use Cases**:
 - Sleep disorder detection
@@ -688,8 +734,8 @@ Performance: 91.43% accuracy
 - Activity patterns
 
 **Performance**: 
-- MAE: 11.2
-- R²: 0.83
+- MAE: ~11.2
+- R²: ~0.83
 
 **Use Cases**:
 - Early detection of CV issues
@@ -708,8 +754,8 @@ Performance: 91.43% accuracy
 - Activity levels
 
 **Performance**: 
-- MAE: 9.7
-- R²: 0.81
+- MAE: ~9.7
+- R²: ~0.81
 
 **Use Cases**:
 - Mental health monitoring
@@ -728,8 +774,8 @@ Performance: 91.43% accuracy
 - Previous day trends
 
 **Performance**: 
-- MAE: 1,247 steps
-- R²: 0.79
+- MAE: ~1,247 steps
+- R²: ~0.79
 
 **Use Cases**:
 - Activity goal setting
@@ -748,8 +794,8 @@ Performance: 91.43% accuracy
 - Heart rate recovery
 
 **Performance**: 
-- MAE: 0.83 days
-- R²: 0.76
+- MAE: ~0.83 days
+- R²: ~0.76
 
 **Use Cases**:
 - Overtraining prevention
@@ -778,6 +824,13 @@ SHAP (SHapley Additive exPlanations) provides model-agnostic interpretability by
 - NODE: DeepExplainer
 - ResNet: GradientExplainer
 
+### SHAP Visualizations
+- **Bar Plots**: Show overall feature importance
+- **Beeswarm Plots**: Show feature impact distribution
+- **Waterfall Plots**: Explain individual predictions
+- **Summary Reports**: Aggregate insights across models
+
+---
 
 ## 🛠️ Technologies Used
 
@@ -803,7 +856,6 @@ SHAP (SHapley Additive exPlanations) provides model-agnostic interpretability by
 
 ### Development Tools
 - Python 3.8+
-- Jupyter Notebook (optional)
 - Git for version control
 
 ---
@@ -879,11 +931,315 @@ cd Wearable-Data-Fusion
 python main.py
 ```
 
+#### Issue: `FileNotFoundError: [Errno 2] No such file or directory`
+**Solution**:
+- Ensure the dataset is placed in `data/raw/`
+- Check that all directory structures exist
+- Run `mkdir -p data/raw data/cleaned data/processed outputs models` on Linux/Mac
+- Or manually create the directories on Windows
+
 #### Issue: `TensorFlow GPU not detected`
 **Solution**:
 ```bash
-# Install GPU version
+# Install GPU version (if you have NVIDIA GPU with CUDA)
 pip install tensorflow-gpu
 
 # Verify GPU availability
-python -c "import tensorflow
+python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+```
+
+#### Issue: `Memory Error during training`
+**Solution**:
+- Reduce batch size in training scripts
+- Use fewer samples for SHAP analysis
+- Close other applications to free up RAM
+- Consider using a machine with more memory
+
+#### Issue: `SHAP plots not generating`
+**Solution**:
+```bash
+# Ensure all dependencies are installed
+pip install --upgrade shap matplotlib
+
+# Check if outputs directory exists
+mkdir -p outputs/advanced_predictions outputs/dnn_shap
+
+# Run SHAP analysis separately
+python src/shap_explainability.py
+```
+
+#### Issue: `Long training times`
+**Solution**:
+- Use GPU acceleration if available
+- Reduce number of epochs in training scripts
+- Train individual models instead of full pipeline
+- Use smaller sample sizes for development/testing
+
+#### Issue: `Inconsistent results across runs`
+**Solution**:
+- Random seeds are set in all modules
+- Ensure TensorFlow determinism is enabled
+- Check that data preprocessing is deterministic
+- Verify no data leakage between train/test splits
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see below for details:
+
+```
+MIT License
+
+Copyright (c) 2024 Wearable Health Fusion
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+---
+
+### Project Links
+- **Repository**: [https://github.com/divya1010-b/Wearable-Data-Fusion](https://github.com/divya1010-b/Wearable-Data-Fusion)
+- **Issues**: [https://github.com/divya1010-b/Wearable-Data-Fusion/issues](https://github.com/divya1010-b/Wearable-Data-Fusion/issues)
+- **Discussions**: [https://github.com/divya1010-b/Wearable-Data-Fusion/discussions](https://github.com/divya1010-b/Wearable-Data-Fusion/discussions)
+
+### Support
+For questions, issues, or feature requests:
+1. Check the [Troubleshooting](#-troubleshooting) section
+2. Search existing [GitHub Issues](https://github.com/divya1010-b/Wearable-Data-Fusion/issues)
+3. Open a new issue if your problem is not covered
+4. Join discussions in the [Discussions tab](https://github.com/divya1010-b/Wearable-Data-Fusion/discussions)
+
+---
+
+## 🎓 Citation
+
+If you use this project in your research or work, please cite:
+
+```bibtex
+@software{wearable_health_fusion_2024,
+  author = {Divya},
+  title = {Wearable Health Fusion: Multi-Model Health Monitoring System},
+  year = {2024},
+  publisher = {GitHub},
+  url = {https://github.com/yourusername/Wearable-Data-Fusion}
+}
+```
+
+---
+
+## 🌟 Acknowledgments
+
+### Dataset
+- **Smart Healthcare – DailyLife Dataset**: Thank you to the dataset creators for providing high-quality wearable device data
+- **Kaggle Community**: For hosting and maintaining the dataset
+
+### Libraries & Frameworks
+- **TensorFlow/Keras Team**: For powerful deep learning tools
+- **scikit-learn Contributors**: For comprehensive ML algorithms
+- **SHAP Library**: For making model interpretability accessible
+- **XGBoost & LightGBM Teams**: For efficient gradient boosting implementations
+
+### Inspiration
+- Research papers on wearable health monitoring
+- Healthcare ML community
+- Open-source ML/DL projects
+
+---
+
+## 📚 Additional Resources
+
+### Documentation
+- [TensorFlow Documentation](https://www.tensorflow.org/api_docs)
+- [scikit-learn User Guide](https://scikit-learn.org/stable/user_guide.html)
+- [SHAP Documentation](https://shap.readthedocs.io/)
+- [XGBoost Documentation](https://xgboost.readthedocs.io/)
+- [LightGBM Documentation](https://lightgbm.readthedocs.io/)
+
+### Related Projects
+- [Healthcare ML Projects on GitHub](https://github.com/topics/healthcare-ml)
+- [Wearable Data Analysis](https://github.com/topics/wearable-data)
+- [Time Series Health Monitoring](https://github.com/topics/health-monitoring)
+
+### Research Papers
+- Neural Oblivious Decision Ensembles (NODE)
+- SHAP: A Unified Approach to Interpreting Model Predictions
+- Deep Learning for Healthcare Applications
+- Wearable Sensors for Health Monitoring: A Review
+
+---
+
+## 🔄 Version History
+
+### Version 1.0.0 (Current)
+- ✅ Complete pipeline implementation
+- ✅ 9 ML/DL models (4 traditional + 5 deep learning)
+- ✅ SHAP explainability for all models
+- ✅ Advanced predictions (5 specialized models)
+- ✅ Comprehensive visualizations
+- ✅ Full documentation
+
+### Future Roadmap
+- 🔜 Web interface for real-time predictions
+- 🔜 Mobile app integration
+- 🔜 Real-time data streaming support
+- 🔜 Additional health metrics (glucose, temperature)
+- 🔜 Personalized health recommendations engine
+- 🔜 Integration with popular fitness trackers
+- 🔜 Multi-user dashboard
+- 🔜 Anomaly detection system
+- 🔜 Longitudinal health trend analysis
+
+---
+
+## ⚡ Quick Reference
+
+### Command Cheat Sheet
+
+```bash
+# Full pipeline
+python main.py
+
+# Individual phases
+python main.py --phase preprocessing
+python main.py --phase features
+python main.py --phase training
+python main.py --phase dnn
+python main.py --phase cnn
+python main.py --phase transformer
+python main.py --phase node
+python main.py --phase resnet
+python main.py --phase shap
+python main.py --phase comparison
+python main.py --phase predictions
+
+# Run with custom data path
+python main.py --data path/to/your/dataset.csv
+
+# Individual modules
+python src/data_preprocessing.py
+python src/feature_engineering.py
+python src/model_training.py
+python src/advanced_predictions.py
+```
+
+### File Locations
+
+**Input Data**:
+- Raw data: `data/raw/`
+- Cleaned data: `data/cleaned/canonical_dataset.csv`
+- Feature data: `data/processed/feature_dataset.csv`
+
+**Trained Models**:
+- Traditional ML: `models/random_forest.pkl`, `models/xgboost.pkl`, etc.
+- Deep Learning: `models/dnn_model.h5`, `models/cnn_model.h5`, etc.
+- Scalers: `models/*_scaler.pkl`
+
+**Visualizations**:
+- Training plots: `outputs/*_training_history.png`
+- SHAP plots: `outputs/shap_*.png`
+- Comparisons: `outputs/*_comparison.png`
+- Advanced predictions: `outputs/advanced_predictions/*.png`
+- Deep learning SHAP: `outputs/dnn_shap/*.png`
+
+---
+
+## 🎯 Project Goals Achieved
+
+✅ **Data Processing**: Automated pipeline for cleaning and feature engineering  
+✅ **Multi-Model Training**: 9 diverse ML/DL models with 94%+ accuracy  
+✅ **Explainability**: SHAP analysis for all models  
+✅ **Advanced Analytics**: 5 specialized prediction tasks  
+✅ **Visualization**: Comprehensive plots and charts  
+✅ **Documentation**: Complete README and code documentation  
+✅ **Reproducibility**: Fixed random seeds and clear instructions  
+✅ **Modularity**: Independent, reusable components  
+✅ **Performance**: Efficient training with GPU support  
+✅ **Scalability**: Handles large datasets with batching  
+
+---
+
+## 🚀 Getting Started Checklist
+
+- [ ] Clone the repository
+- [ ] Create virtual environment
+- [ ] Install dependencies (`pip install -r requirements.txt`)
+- [ ] Download dataset from Kaggle
+- [ ] Place dataset in `data/raw/`
+- [ ] Run full pipeline (`python main.py`)
+- [ ] Check outputs in `outputs/` directory
+- [ ] Review model performance in console output
+- [ ] Explore SHAP visualizations
+- [ ] Try individual phases for specific tasks
+- [ ] Customize hyperparameters if needed
+- [ ] Share your results and contribute!
+
+---
+
+## 💡 Tips for Best Results
+
+1. **GPU Acceleration**: Use GPU for 3-5x faster training
+2. **Data Quality**: Ensure dataset is complete and properly formatted
+3. **Hyperparameter Tuning**: Experiment with learning rates and batch sizes
+4. **Feature Selection**: Analyze SHAP plots to identify key features
+5. **Ensemble Methods**: Combine multiple models for best accuracy
+6. **Cross-Validation**: Use k-fold CV for more robust evaluation
+7. **Regular Checkpoints**: Save models during training
+8. **Monitoring**: Watch training curves for overfitting
+9. **Documentation**: Keep notes on experiments and results
+10. **Version Control**: Commit changes regularly
+
+---
+
+## 🏆 Project Highlights
+
+### Technical Achievements
+- 🎯 **97% Accuracy** with ensemble methods
+- ⚡ **Efficient NODE** model (37K parameters, 96.43% accuracy)
+- 🧠 **5 Deep Learning** architectures implemented
+- 📊 **40+ Engineered Features** from base dataset
+- 🔍 **Complete SHAP** analysis for all models
+- 🎨 **20+ Visualizations** generated automatically
+
+### Key Innovations
+- 🆕 VGG-like CNN for tabular data
+- 🆕 Transformer-style MLP with residual connections
+- 🆕 NODE-inspired ensemble architecture
+- 🆕 5 specialized prediction models
+- 🆕 Automated SHAP explainability pipeline
+- 🆕 Comprehensive health score composite
+
+### Real-World Applications
+- 🏥 Early disease detection
+- 💊 Personalized health recommendations
+- 📱 Wearable device integration
+- 🏃 Fitness tracking and optimization
+- 😴 Sleep quality monitoring
+- ❤️ Cardiovascular risk assessment
+- 🧘 Stress level estimation
+- 📈 Health trend analysis
+
+---
+
+<div align="center">
+
+## ⭐ Star this repository if you find it helpful!
+
+
+</div>
